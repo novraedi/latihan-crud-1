@@ -9,4 +9,8 @@ class Berita extends Model
 {
     use HasFactory;
     protected $table = 'berita';
+    public $timestamps = false;
+    protected $fillable = [
+        'judul', 'gambar', 'isi', 'user_id'
+    ];
 }

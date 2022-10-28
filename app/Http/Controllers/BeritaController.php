@@ -14,7 +14,8 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        return view('berita.index');
+        $berita = Berita::all();
+        return view('berita.index', compact('berita'));
     }
 
     /**
@@ -35,7 +36,16 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $judul = $request->judul;
+        $gambar = $request->gambar;
+        $isi = $request->isi;
+        Berita::create([
+            'judul' => $judul,
+            'isi' => $isi,
+            'gambar' => $gambar,
+            'user_id' => 1
+        ]);
+        return redirect()->route('berita.index');
     }
 
     /**
